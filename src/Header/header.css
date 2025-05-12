@@ -1,0 +1,56 @@
+/* Optional Netflix-like font */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.header_outer_container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  height: 10vh;
+  color: white;
+  transition: background-color 0.5s ease-in;
+}
+
+.nav_black {
+  background-color: rgb(20, 20, 20);
+}
+
+.header_container {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header_left ul,
+.header_right ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+.header_right svg {
+  color: white;
+  font-size: 20px;
+}
+
+/* Optional: Responsive behavior */
+@media (max-width: 768px) {
+  .header_left ul {
+    display: none;
+  }
+}
