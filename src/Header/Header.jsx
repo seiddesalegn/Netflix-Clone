@@ -7,16 +7,17 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 function Header() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false); //show- false @z strt n latr it flips to true
 
   useEffect(() => {
     const handleScroll = () => {
       setShow(window.scrollY > 50);
-    };
+    }; //scrow sedereg pagu mn yahl pixl endhone bemayet hederun blak or transparent yadergwal
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  //-22 When show is true we add the CSS class nav_black, which makes the navbar solid black.//When show is false that class is absent, so the navbar stays transparent.
   return (
     <div className={`header_outer_container ${show ? "nav_black" : ""}`}>
       <div className="header_container">

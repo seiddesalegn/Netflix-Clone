@@ -5,16 +5,19 @@ import movieTrailer from "movie-trailer";
 import "./Row.css";
 
 function Row({ title, fetchUrl, isLargeRow }) {
-  const [movies, setMovies] = useState([]);
-  const [trailerUrl, setTrailerUrl] = useState("");
+  const [movies, setMovies] = useState([]); //array of movies
+  const [trailerUrl, setTrailerUrl] = useState(""); //YouTube video-ID to play
 
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
-      setMovies(request.data.results);
+      //HTTP GET request (with Axios) to the TMDb endpoint stored in fetchUrl.z call is awaited, so JS. pauses inside fetchData until the response arrives.
+      setMovies(request.data.results); //Extract array of movie objects returned by TMDb
     }
     fetchData();
+    //executs the fetching logic inside z effect ,W-out calling fetchData(), nothing happens.
   }, [fetchUrl]);
+  //control how often and when z entire effect (incl fetchData()) runs.Without [fetchUrl], the effect would run every render, causing repeated fetches.
 
   const handleClick = (movie) => {
     if (trailerUrl) {
@@ -63,39 +66,3 @@ function Row({ title, fetchUrl, isLargeRow }) {
 }
 
 export default Row;
-
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import "./Row.css";
-
-// function Row({ title, fetchUrl, isLargeRow }) {
-//   const [movies, setMovies] = useState([]);
-
-//   useEffect(() => {
-//     // Fetch movie data
-//     async function fetchData() {
-//       const request = await axios.get(fetchUrl);
-//       setMovies(request.data.results); // Store movie results
-//       return request;
-//     }
-//     fetchData();
-//   }, [fetchUrl]); // Run when fetchUrl changes
-
-//   return (
-//     <div className="row">
-//       <h2>{title}</h2>
-//       <div className="row_posters">
-//         {movies.map((movie) => (
-//           <img
-//             key={movie.id}
-//             className={`row_poster ${isLargeRow && "row_posterLarge"}`}
-//             src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-//             alt={movie.name}
-//           />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Row;

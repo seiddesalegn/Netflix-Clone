@@ -4,7 +4,7 @@ import requests from "../../requests";
 import "./banner.css";
 
 function Banner() {
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState({}); //Hold single movie obj zat wil drive z banr UI.
 
   useEffect(() => {
     async function fetchData() {

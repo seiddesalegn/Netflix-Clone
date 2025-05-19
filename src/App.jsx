@@ -11,3 +11,4 @@ function App() {
 }
 
 export default App;
+//it renders one <div> with class name App which shows home component within that it contains whole netflix ui.

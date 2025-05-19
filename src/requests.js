@@ -1,6 +1,4 @@
-// src/requests.js
-
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY; // my api key after after env
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY; // my api key after env which is safe to use
 
 const requests = {
   fetchTrending: `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=en-US`,
@@ -14,3 +12,5 @@ const requests = {
 };
 
 export default requests;
+//requests.js is just a dictionary of ready-to-use TMDb URLs. It reads my API key from a Vite env variable, plugs that key into each endpoint with template literals, and exports the object. Components import a URL like requests.fetchTopRated and pass it straight to Axios—keeping fetch logic centralized and components clean.”
+//
